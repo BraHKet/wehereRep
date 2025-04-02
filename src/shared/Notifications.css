@@ -1,0 +1,203 @@
+/* src/styles/Notifications.css */
+
+/* Icona della campanella */
+.notification-icon-container {
+    position: relative;
+    margin-right: 1rem;
+  }
+  
+  .notification-bell {
+    background: none;
+    border: none;
+    color: #495057;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .notification-bell:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #129e44;
+  }
+  
+  .notification-bell.active {
+    color: #129e44;
+    background-color: rgba(18, 158, 68, 0.1);
+  }
+  
+  /* Badge del contatore di notifiche */
+  .notification-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+  
+  .notification-badge::after {
+    content: attr(data-count);
+  }
+  
+  /* Animazione della campanella quando arriva una nuova notifica */
+  @keyframes bellShake {
+    0% { transform: rotate(0); }
+    15% { transform: rotate(5deg); }
+    30% { transform: rotate(-5deg); }
+    45% { transform: rotate(4deg); }
+    60% { transform: rotate(-4deg); }
+    75% { transform: rotate(2deg); }
+    85% { transform: rotate(-2deg); }
+    92% { transform: rotate(1deg); }
+    100% { transform: rotate(0); }
+  }
+  
+  .notification-bell.new-notification {
+    animation: bellShake 1s cubic-bezier(.36,.07,.19,.97) both;
+  }
+  
+  /* Pannello delle notifiche */
+  .notification-panel {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    width: 320px;
+    max-width: 90vw;
+    max-height: 500px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Intestazione del pannello */
+  .notification-header {
+    padding: 15px;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .notification-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #343a40;
+  }
+  
+  .mark-all-read {
+    background: none;
+    border: none;
+    color: #129e44;
+    cursor: pointer;
+    font-size: 0.85rem;
+    padding: 5px;
+  }
+  
+  .mark-all-read:hover {
+    text-decoration: underline;
+  }
+  
+  /* Lista delle notifiche */
+  .notification-list {
+    overflow-y: auto;
+    max-height: 420px;
+  }
+  
+  .empty-notifications {
+    padding: 30px 15px;
+    text-align: center;
+    color: #6c757d;
+  }
+  
+  .notification-loading {
+    padding: 20px;
+    text-align: center;
+    color: #6c757d;
+  }
+  
+  /* Elemento della notifica */
+  .notification-item {
+    padding: 15px;
+    border-bottom: 1px solid #e9ecef;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .notification-item:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .notification-item.unread {
+    background-color: rgba(18, 158, 68, 0.05);
+  }
+  
+  .notification-item.unread:hover {
+    background-color: rgba(18, 158, 68, 0.1);
+  }
+  
+  .notification-content {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  /* Icone per i diversi tipi di notifiche */
+  .notification-icon {
+    margin-right: 10px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #f8f9fa;
+    flex-shrink: 0;
+  }
+  
+  .notification-text {
+    flex: 1;
+  }
+  
+  .notification-title {
+    font-weight: 600;
+    margin-bottom: 3px;
+    color: #343a40;
+    font-size: 0.95rem;
+  }
+  
+  .notification-message {
+    color: #6c757d;
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+    line-height: 1.4;
+  }
+  
+  .notification-time {
+    font-size: 0.75rem;
+    color: #adb5bd;
+  }
+  
+  /* Responsive */
+  @media (max-width: 576px) {
+    .notification-panel {
+      width: calc(100% - 40px);
+      right: 10px;
+    }
+  }

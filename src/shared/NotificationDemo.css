@@ -1,0 +1,74 @@
+/* src/styles/NotificationDemo.css */
+
+.notification-demo {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .notification-demo h3 {
+    font-size: 1.3rem;
+    color: #212529;
+    margin-bottom: 0.5rem;
+  }
+  
+  .notification-demo p {
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+  }
+  
+  .demo-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+  }
+  
+  .demo-button {
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 30px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+  }
+  
+  .demo-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .demo-button.party {
+    background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%);
+  }
+  
+  .demo-button.product {
+    background: linear-gradient(45deg, #ee0979 0%, #ff6a00 100%);
+  }
+  
+  .demo-button.order {
+    background: linear-gradient(45deg, #11998e 0%, #38ef7d 100%);
+  }
+  
+  .demo-button.system {
+    background: linear-gradient(45deg, #f37335 0%, #fdc830 100%);
+  }
+  
+  @media (max-width: 576px) {
+    .notification-demo {
+      margin: 1rem;
+      padding: 1rem;
+    }
+    
+    .demo-buttons {
+      flex-direction: column;
+    }
+    
+    .demo-button {
+      width: 100%;
+    }
+  }
