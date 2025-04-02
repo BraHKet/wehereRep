@@ -8,6 +8,9 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Dashboard from './components/Dashboard';
 import { NotificationProvider } from './contexts/NotificationContext';
+import CreateParty from './components/CreateParty';
+import MyParties from './components/MyParties';
+import PartyDetail from './components/PartyDetail';
 
 // Altri componenti da implementare
 // import CreateParty from './components/CreateParty';
@@ -44,6 +47,30 @@ const App = () => {
               element={
                 <ProtectedRoute>
                   <Dashboard />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/party/:partyId" 
+              element={
+              <ProtectedRoute>
+                <PartyDetail />
+              </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/my-parties" 
+              element={
+              <ProtectedRoute>
+                <MyParties />
+              </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/create-party" 
+              element={
+                <ProtectedRoute>
+                  <CreateParty />
                 </ProtectedRoute>
               } 
             />

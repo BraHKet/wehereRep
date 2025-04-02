@@ -367,3 +367,176 @@
     font-size: 0.9rem;
   }
 }
+
+/* Responsive modifiche *\
+
+/* Ottimizzazioni responsive per pagina dettaglio prodotto */
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Ottimizzazioni per dispositivi molto piccoli */
+@media (max-width: 576px) {
+  .product-detail-header {
+    padding: 0.8rem;
+  }
+  
+  .product-detail-container {
+    padding: 1rem;
+  }
+  
+  .back-button {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .product-detail-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .product-image-gallery {
+    min-height: 250px;
+    padding: 1rem;
+  }
+  
+  .main-product-image {
+    max-height: 250px;
+  }
+  
+  .product-info {
+    padding: 1rem;
+  }
+  
+  .product-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .product-price {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .product-rating {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .product-description {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .product-sizes h3 {
+    font-size: 1rem;
+  }
+  
+  .size-button {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+  
+  .add-to-party-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .party-modal {
+    padding: 1.5rem;
+    width: 95%;
+  }
+  
+  .party-modal h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .party-item {
+    padding: 0.8rem;
+  }
+  
+  .create-party-button, 
+  .close-modal-button {
+    padding: 0.7rem 1.2rem;
+  }
+}
+
+/* Ottimizzazioni per dispositivi estremamente piccoli */
+@media (max-width: 360px) {
+  .product-title {
+    font-size: 1.2rem;
+  }
+  
+  .product-price {
+    font-size: 1.3rem;
+  }
+  
+  .size-options {
+    justify-content: center;
+  }
+  
+  .size-button {
+    width: 35px;
+    height: 35px;
+    font-size: 0.8rem;
+  }
+  
+  .add-to-party-button {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .party-list {
+    max-height: 180px;
+  }
+}
+
+/* Fix per modal su mobile */
+@media (max-height: 600px) {
+  .party-modal {
+    max-height: 90vh;
+    padding: 1.2rem;
+  }
+  
+  .party-list {
+    max-height: 150px;
+  }
+}
+
+/* Migliorie per touchscreen */
+.size-button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.party-list {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Fix per immagini su tutti i dispositivi */
+.main-product-image {
+  display: block;
+  margin: 0 auto;
+}
+
+/* Ottimizzazione per schermi più grandi */
+@media (min-width: 1400px) {
+  .product-detail-container {
+    max-width: 1400px;
+  }
+  
+  .product-detail-content {
+    gap: 3rem;
+  }
+  
+  .product-image-gallery {
+    min-height: 500px;
+  }
+  
+  .main-product-image {
+    max-height: 500px;
+  }
+}

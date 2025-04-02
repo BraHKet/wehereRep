@@ -1,0 +1,255 @@
+/* src/styles/MyParties.css */
+
+.my-parties-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    min-height: calc(100vh - 80px);
+  }
+  
+  .back-navigation {
+    margin-bottom: 1.5rem;
+  }
+  
+  .back-arrow-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    color: #495057;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .back-arrow-button:hover {
+    color: #129e44;
+  }
+  
+  .back-arrow {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .my-parties-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .my-parties-header h1 {
+    font-size: 2rem;
+    color: #212529;
+    margin: 0;
+  }
+  
+  .create-party-btn {
+    background: linear-gradient(45deg, #129e44 0%, #34d065 100%);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 3px 8px rgba(18, 158, 68, 0.2);
+  }
+  
+  .create-party-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(18, 158, 68, 0.3);
+  }
+  
+  .parties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .party-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .party-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .party-image {
+    height: 160px;
+    overflow: hidden;
+    position: relative;
+    background-color: #f8f9fa;
+  }
+  
+  .party-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .party-card:hover .party-image img {
+    transform: scale(1.05);
+  }
+  
+  .party-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, rgba(18, 158, 68, 0.1) 0%, rgba(52, 208, 101, 0.2) 100%);
+  }
+  
+  .party-image-placeholder span {
+    font-size: 3rem;
+  }
+  
+  .party-info {
+    padding: 1.2rem;
+    position: relative;
+  }
+  
+  .party-name {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #212529;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+  
+  .party-date {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .creator-badge {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    background: linear-gradient(45deg, #129e44 0%, #34d065 100%);
+    color: white;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+  
+  .party-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  
+  .status-indicator.active {
+    background-color: #20c997;
+  }
+  
+  .status-indicator.pending {
+    background-color: #ffc107;
+  }
+  
+  .status-indicator.completed {
+    background-color: #6c757d;
+  }
+  
+  .status-text {
+    font-size: 0.85rem;
+    color: #6c757d;
+  }
+  
+  .loading-message,
+  .error-message {
+    text-align: center;
+    padding: 2rem;
+    color: #6c757d;
+    font-size: 1.1rem;
+  }
+  
+  .error-message {
+    color: #dc3545;
+  }
+  
+  .empty-parties {
+    background-color: white;
+    border-radius: 10px;
+    padding: 3rem 2rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+  }
+  
+  .empty-state p {
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .empty-state-btn {
+    margin: 0 auto;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .my-parties-container {
+      padding: 1rem;
+    }
+    
+    .my-parties-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .my-parties-header h1 {
+      font-size: 1.5rem;
+    }
+    
+    .parties-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .party-card {
+      max-width: 100%;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .my-parties-header h1 {
+      font-size: 1.3rem;
+    }
+    
+    .create-party-btn {
+      width: 100%;
+      text-align: center;
+    }
+    
+    .party-image {
+      height: 140px;
+    }
+    
+    .party-name {
+      font-size: 1.1rem;
+    }
+    
+    .empty-parties {
+      padding: 2rem 1rem;
+    }
+  }

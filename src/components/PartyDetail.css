@@ -1,0 +1,304 @@
+/* src/components/PartyDetail.css */
+
+.party-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    min-height: calc(100vh - 80px);
+  }
+  
+  .party-detail-content {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+  }
+  
+  .party-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 1.5rem;
+  }
+  
+  .party-header-info {
+    flex: 1;
+  }
+  
+  .party-title {
+    font-size: 2rem;
+    color: #212529;
+    margin-bottom: 0.5rem;
+  }
+  
+  .party-date {
+    color: #6c757d;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .creator-badge {
+    display: inline-block;
+    background: linear-gradient(45deg, #129e44 0%, #34d065 100%);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  
+  .party-image {
+    width: 200px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-left: 2rem;
+  }
+  
+  .party-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .party-description {
+    margin-bottom: 2rem;
+  }
+  
+  .party-description h3 {
+    font-size: 1.3rem;
+    color: #343a40;
+    margin-bottom: 0.8rem;
+  }
+  
+  .party-description p {
+    color: #495057;
+    line-height: 1.6;
+  }
+  
+  .party-members, .party-products {
+    margin-bottom: 2rem;
+  }
+  
+  .party-members h3, .party-products h3 {
+    font-size: 1.3rem;
+    color: #343a40;
+    margin-bottom: 1rem;
+  }
+  
+  .members-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .member-item {
+    display: flex;
+    align-items: center;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 0.8rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .member-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .member-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 0.8rem;
+    flex-shrink: 0;
+  }
+  
+  .member-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .member-info {
+    flex: 1;
+  }
+  
+  .member-name {
+    font-weight: 500;
+    color: #343a40;
+    margin-bottom: 0.2rem;
+  }
+  
+  .member-role {
+    font-size: 0.8rem;
+    color: #6c757d;
+  }
+  
+  .empty-products {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+  }
+  
+  .empty-products p {
+    color: #6c757d;
+    margin-bottom: 1rem;
+  }
+  
+  .add-product-btn {
+    background: linear-gradient(45deg, #129e44 0%, #34d065 100%);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 0.7rem 1.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .add-product-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(18, 158, 68, 0.2);
+  }
+  
+  .products-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .product-item {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-image {
+    height: 150px;
+    overflow: hidden;
+    background-color: #f8f9fa;
+  }
+  
+  .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .product-info {
+    padding: 1rem;
+  }
+  
+  .product-title {
+    font-weight: 500;
+    color: #343a40;
+    margin-bottom: 0.4rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .product-price {
+    font-weight: 700;
+    color: #129e44;
+    margin-bottom: 0.4rem;
+  }
+  
+  .product-size {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 0.4rem;
+  }
+  
+  .product-added-by {
+    font-size: 0.8rem;
+    color: #6c757d;
+  }
+  
+  .loading-message, .error-message {
+    text-align: center;
+    padding: 3rem;
+    font-size: 1.1rem;
+  }
+  
+  .loading-message {
+    color: #6c757d;
+  }
+  
+  .error-message {
+    color: #dc3545;
+  }
+  
+  .party-detail-footer {
+    padding: 1.5rem;
+    text-align: center;
+    color: #6c757d;
+    border-top: 1px solid #e9ecef;
+    background-color: white;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .party-detail-container {
+      padding: 1rem;
+    }
+    
+    .party-detail-content {
+      padding: 1.5rem;
+    }
+    
+    .party-header {
+      flex-direction: column;
+    }
+    
+    .party-image {
+      width: 100%;
+      margin-left: 0;
+      margin-top: 1rem;
+    }
+    
+    .party-title {
+      font-size: 1.5rem;
+    }
+    
+    .members-list, .products-list {
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .party-detail-content {
+      padding: 1rem;
+    }
+    
+    .members-list, .products-list {
+      grid-template-columns: 1fr;
+    }
+    
+    .party-members, .party-products {
+      margin-bottom: 1.5rem;
+    }
+    
+    .member-item {
+      padding: 0.6rem;
+    }
+    
+    .product-image {
+      height: 120px;
+    }
+  }

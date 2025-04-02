@@ -1,0 +1,94 @@
+/* src/components/shared/LeavePartyButton.css */
+
+.leave-party-container {
+    margin-top: 1.5rem;
+  }
+  
+  .leave-party-button {
+    background-color: #f8d7da;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+    border-radius: 30px;
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+  }
+  
+  .leave-party-button:hover {
+    background-color: #f5c2c7;
+  }
+  
+  .leave-confirmation {
+    background-color: #f8d7da;
+    border: 1px solid #f5c2c7;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .leave-confirmation p {
+    margin-bottom: 0.8rem;
+    color: #842029;
+    font-size: 0.9rem;
+  }
+  
+  .leave-confirmation-buttons {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+  
+  .confirm-leave-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+    flex: 1;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .confirm-leave-button:hover {
+    background-color: #bb2d3b;
+  }
+  
+  .confirm-leave-button:disabled {
+    background-color: #e9a4ad;
+    cursor: not-allowed;
+  }
+  
+  .cancel-leave-button {
+    background-color: white;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+    border-radius: 30px;
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+    flex: 1;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .cancel-leave-button:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .cancel-leave-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  /* Responsive */
+  @media (max-width: 576px) {
+    .leave-confirmation-buttons {
+      flex-direction: column;
+    }
+    
+    .leave-confirmation p {
+      font-size: 0.85rem;
+    }
+  }

@@ -1,0 +1,383 @@
+/* src/styles/CreateParty.css */
+
+.create-party-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f9fa;
+  }
+  
+  .create-party-header {
+    background-color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .create-party-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    flex: 1;
+  }
+  
+  .back-button {
+    background: transparent;
+    border: none;
+    color: #495057;
+    padding: 0.5rem 0;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    transition: color 0.3s;
+  }
+  
+  .back-button:hover {
+    color: #129e44;
+  }
+  
+  .create-party-content {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+  }
+  
+  .create-party-title {
+    font-size: 2rem;
+    color: #212529;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+  
+  .create-party-subtitle {
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .create-party-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-group label {
+    font-weight: 600;
+    color: #343a40;
+  }
+  
+  .form-group input, 
+  .form-group textarea {
+    padding: 0.8rem;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+  }
+  
+  .form-group input:focus, 
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #129e44;
+  }
+  
+  .friend-input-container {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .friend-input-container input {
+    flex: 1;
+  }
+  
+  .add-friend-btn {
+    background: linear-gradient(45deg, #129e44 0%, #34d065 100%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+  
+  .add-friend-btn:hover {
+    box-shadow: 0 3px 8px rgba(18, 158, 68, 0.2);
+  }
+  
+  .friends-list {
+    margin-top: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    padding: 1rem;
+  }
+  
+  .friends-list h3 {
+    font-size: 1rem;
+    color: #343a40;
+    margin-bottom: 0.5rem;
+  }
+  
+  .friends-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .friends-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e9ecef;
+  }
+  
+  .friends-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .remove-friend-btn {
+    background: none;
+    border: none;
+    color: #dc3545;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .remove-friend-btn:hover {
+    color: #bd2130;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+  
+  .cancel-btn {
+    background-color: transparent;
+    border: 1px solid #ced4da;
+    border-radius: 30px;
+    padding: 0.8rem 2rem;
+    color: #6c757d;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+  }
+  
+  .cancel-btn:hover {
+    background-color: #f1f3f5;
+    color: #343a40;
+  }
+  
+  .create-btn {
+    background: linear-gradient(45deg, #129e44 0%, #34d065 100%);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 0.8rem 2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+    box-shadow: 0 3px 8px rgba(18, 158, 68, 0.2);
+  }
+  
+  .create-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(18, 158, 68, 0.3);
+  }
+  
+  .create-btn:disabled {
+    background: linear-gradient(45deg, #88c49f 0%, #a5e0b8 100%);
+    transform: none;
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+  
+  .error {
+    border-color: #dc3545 !important;
+  }
+  
+  .error-message {
+    color: #dc3545;
+    font-size: 0.85rem;
+    margin-top: 0.2rem;
+  }
+  
+  .submit-error {
+    text-align: center;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: rgba(220, 53, 69, 0.1);
+    border-radius: 5px;
+  }
+  
+  .create-party-footer {
+    padding: 1.5rem;
+    text-align: center;
+    color: #6c757d;
+    border-top: 1px solid #e9ecef;
+    background-color: white;
+    margin-top: 2rem;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .create-party-header {
+      padding: 1rem;
+    }
+    
+    .create-party-container {
+      padding: 1rem;
+    }
+    
+    .create-party-content {
+      padding: 1.5rem;
+    }
+    
+    .create-party-title {
+      font-size: 1.5rem;
+    }
+    
+    .create-party-subtitle {
+      font-size: 1rem;
+    }
+    
+    .form-actions {
+      flex-direction: column-reverse;
+      gap: 1rem;
+    }
+    
+    .cancel-btn, .create-btn {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .friend-input-container {
+      flex-direction: column;
+    }
+    
+    .add-friend-btn {
+      width: 100%;
+    }
+  }
+
+  /* Aggiungere queste regole alla fine di src/styles/CreateParty.css */
+
+/* Migliorie responsive per la pagina Crea Party */
+@media (max-width: 576px) {
+    .create-party-header {
+      padding: 0.8rem;
+    }
+    
+    .user-menu {
+      gap: 0.5rem;
+    }
+    
+    .user-name {
+      display: none;
+    }
+    
+    .dashboard-btn {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.9rem;
+    }
+    
+    .create-party-container {
+      padding: 1rem 0.8rem;
+    }
+    
+    .create-party-content {
+      padding: 1.2rem;
+    }
+    
+    .create-party-title {
+      font-size: 1.4rem;
+    }
+    
+    .create-party-subtitle {
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group input, 
+    .form-group textarea {
+      padding: 0.7rem;
+      font-size: 0.9rem;
+    }
+    
+    .friends-list {
+      padding: 0.8rem;
+    }
+    
+    .friends-list h3 {
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* Fix per dispositivi molto piccoli */
+  @media (max-width: 360px) {
+    .create-party-title {
+      font-size: 1.3rem;
+    }
+    
+    .create-party-footer {
+      padding: 1rem;
+      font-size: 0.8rem;
+    }
+  }
+  
+  /* Migliorie per schermi grandi */
+  @media (min-width: 1400px) {
+    .create-party-container {
+      max-width: 900px;
+    }
+  }
+  
+  /* Fix per input date sui dispositivi mobili */
+  input[type="date"] {
+    -webkit-appearance: none;
+  }
+  
+  /* Migliorie per touchscreen */
+  .add-friend-btn, 
+  .remove-friend-btn,
+  .cancel-btn,
+  .create-btn,
+  .back-button {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Animazione per il pulsante di creazione */
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(18, 158, 68, 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(18, 158, 68, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(18, 158, 68, 0);
+    }
+  }
+  
+  .create-btn:not(:disabled):active {
+    animation: pulse 0.8s;
+  }

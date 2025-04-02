@@ -88,12 +88,13 @@ const { user, logout } = useAuth();
     navigate(`/product/${productId}`);
   };
 
-  
+  const handleBackToDashboard = () => {
+    navigate('/dashboard');
+  };
     
 
   return (
-    
-    <div className="product-catalog-container">
+    <div className="dashboard-container">
       <header className="dashboard-header">
         <div className="logo-small">We Here</div>
         <div className="user-menu">
@@ -110,67 +111,77 @@ const { user, logout } = useAuth();
             Logout
           </button>
         </div>
+        <NotificationPanel />
       </header>
 
-      <div className="search-and-filters">
-        <div className="search-bar">
-          <input
-            type="text"
-            placeholder="Cerca prodotti..."
-            value={searchQuery}
-            onChange={handleSearch}
-            className="search-input"
-          />
-          <button className="search-button">
-            <span role="img" aria-label="search">🔍</span>
+
+      <div className="product-catalog-container">
+        
+        <div className="back-navigation">
+          <button className="back-arrow-button" onClick={handleBackToDashboard}>
+            <span className="back-arrow">←</span> Torna alla dashboard
           </button>
         </div>
-
-        <div className="category-filters">
-          {categories.map(category => (
-            <button
-              key={category}
-              className={`category-button ${selectedCategory === category ? 'active' : ''}`}
-              onClick={() => handleCategoryChange(category)}
-            >
-              {category === 'all' ? 'Tutte le categorie' : category.charAt(0).toUpperCase() + category.slice(1)}
+        <div className="search-and-filters">
+          <div className="search-bar">
+            <input
+              type="text"
+              placeholder="Cerca prodotti..."
+              value={searchQuery}
+              onChange={handleSearch}
+              className="search-input"
+            />
+            <button className="search-button">
+              <span role="img" aria-label="search">🔍</span>
             </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="products-section">
-        {loading ? (
-          <div className="loading-message">Caricamento prodotti in corso...</div>
-        ) : error ? (
-          <div className="error-message">{error}</div>
-        ) : filteredProducts.length === 0 ? (
-          <div className="no-products-message">
-            Nessun prodotto trovato per la tua ricerca.
           </div>
-        ) : (
-          <div className="products-grid">
-            {filteredProducts.map(product => (
-              <div
-                key={product.id}
-                className="product-card"
-                onClick={() => handleProductClick(product.id)}
+
+          <div className="category-filters">
+            {categories.map(category => (
+              <button
+                key={category}
+                className={`category-button ${selectedCategory === category ? 'active' : ''}`}
+                onClick={() => handleCategoryChange(category)}
               >
-                <div className="product-image-container">
-                  <img src={product.image} alt={product.title} className="product-image" />
-                </div>
-                <div className="product-brand">{product.brand}</div>
-                <div className="product-title">{product.title}</div>
-                <div className="product-price">€{product.price.toFixed(2)}</div>
-                <div className="product-rating">
-                  {'★'.repeat(Math.round(product.rating))}
-                  {'☆'.repeat(5 - Math.round(product.rating))}
-                  <span className="product-reviews">({product.reviews})</span>
-                </div>
-              </div>
+                {category === 'all' ? 'Tutte le categorie' : category.charAt(0).toUpperCase() + category.slice(1)}
+              </button>
             ))}
           </div>
-        )}
+        </div>
+
+        <div className="products-section">
+          {loading ? (
+            <div className="loading-message">Caricamento prodotti in corso...</div>
+          ) : error ? (
+            <div className="error-message">{error}</div>
+          ) : filteredProducts.length === 0 ? (
+            <div className="no-products-message">
+              Nessun prodotto trovato per la tua ricerca.
+            </div>
+          ) : (
+            <div className="products-grid">
+              {filteredProducts.map(product => (
+                <div
+                  key={product.id}
+                  className="product-card"
+                  onClick={() => handleProductClick(product.id)}
+                >
+                  <div className="product-image-container">
+                    <img src={product.image} alt={product.title} className="product-image" />
+                  </div>
+                  <div className="product-brand">{product.brand}</div>
+                  <div className="product-title">{product.title}</div>
+                  <div className="product-price">€{product.price.toFixed(2)}</div>
+                  <div className="product-rating">
+                    {'★'.repeat(Math.round(product.rating))}
+                    {'☆'.repeat(5 - Math.round(product.rating))}
+                    <span className="product-reviews">({product.reviews})</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

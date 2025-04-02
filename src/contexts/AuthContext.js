@@ -1,6 +1,7 @@
 // src/contexts/AuthContext.js
 import React, { createContext, useState, useEffect, useContext } from 'react';
-import { checkUserAuthentication, logout } from '../services/Auth';
+import { auth } from '../firebase/config.js';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 
 // Creazione del contesto
 const AuthContext = createContext(null);
@@ -15,13 +16,21 @@ export const AuthProvider = ({ children }) => {
 
   // Controlla se l'utente è già autenticato all'avvio dell'app
   useEffect(() => {
-    const checkAuth = async () => {
-      const userData = checkUserAuthentication();
-      setUser(userData);
+    const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+      if (authUser) {
+        setUser({
+          id: authUser.uid,
+          email: authUser.email,
+          name: authUser.displayName,
+          picture: authUser.photoURL
+        });
+      } else {
+        setUser(null);
+      }
       setLoading(false);
-    };
+    });
 
-    checkAuth();
+    return () => unsubscribe();
   }, []);
 
   // Funzione per aggiornare lo stato dell'utente dopo il login
@@ -30,9 +39,13 @@ export const AuthProvider = ({ children }) => {
   };
 
   // Funzione per gestire il logout
-  const handleLogout = () => {
-    logout();
-    setUser(null);
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      setUser(null);
+    } catch (error) {
+      console.error('Errore durante il logout:', error);
+    }
   };
 
   // Valore da fornire al contesto

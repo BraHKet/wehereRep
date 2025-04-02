@@ -4,7 +4,10 @@ import './HomePage.css';
 import { useEffect } from 'react';
 import { GoogleLogin } from '@react-oauth/google';
 import { handleGoogleLogin } from './services/Auth';
+import { auth } from './firebase/config.js';
 import { useAuth } from './contexts/AuthContext';
+//import { auth } from './firebase/Config';  // Assicurati che il percorso sia corretto
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 // Componente principale della homepage
 const HomePage = () => {
@@ -19,9 +22,10 @@ const HomePage = () => {
     }, [isAuthenticated, navigate]);
   
     // Gestisce la risposta di successo dall'autenticazione Google
-    const handleLoginSuccess = async (credentialResponse) => {
+    const handleLoginSuccess = async () => {
       try {
-        const result = await handleGoogleLogin(credentialResponse);
+        // Chiama direttamente handleGoogleLogin senza passare credentialResponse
+        const result = await handleGoogleLogin();
         if (result.success) {
           login(result.user);
           navigate('/dashboard');
@@ -52,14 +56,15 @@ const HomePage = () => {
         
         {/* Componente GoogleLogin dalla libreria @react-oauth/google */}
         <div className="google-login-wrapper">
-          <GoogleLogin
-            onSuccess={handleLoginSuccess}
-            onError={handleLoginError}
-            useOneTap
-            shape="pill"
-            text="continue_with"
-            locale="it"
-          />
+          <button 
+            className="google-btn"
+            onClick={handleLoginSuccess}
+          >
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+            <GoogleIcon className="google-icon" />
+            <span>Continua con Google</span>
+          </div>
+          </button>
         </div>
         
         <div className="separator">

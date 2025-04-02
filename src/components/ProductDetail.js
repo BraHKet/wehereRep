@@ -8,8 +8,18 @@ import NotificationIcon from '../shared/NotificationIcon';
 import NotificationPanel from '../shared/NotificationPanel';
 import { useNotifications } from '../contexts/NotificationContext';
 import { createNotification, NOTIFICATION_TYPES } from '../services/Notifications';
+import { getUserParties, addProductToParty } from '../services/Database';
+
+
 
 const ProductDetail = () => {
+  const { user, logout } = useAuth();
+  const { addNotification } = useNotifications();
+    const handleLogout = () => {
+      logout();
+      navigate('/');
+    };
+
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -17,7 +27,6 @@ const ProductDetail = () => {
   const [selectedSize, setSelectedSize] = useState(null);
   const [showPartyModal, setShowPartyModal] = useState(false);
   const [userParties, setUserParties] = useState([]);
-  const { user } = useAuth();
   const navigate = useNavigate();
 
   // Carica i dettagli del prodotto
@@ -37,17 +46,18 @@ const ProductDetail = () => {
 
     // Carica le informazioni sulle feste dell'utente
     // Questa è una simulazione, in un'app reale verrebbero dal backend
-    const fetchUserParties = () => {
-      // Simula il caricamento dei party dell'utente
-      setUserParties([
-        { id: 1, name: 'Festa di Compleanno', date: '15/05/2025' },
-        { id: 2, name: 'Uscita Serale', date: '20/04/2025' }
-      ]);
+    const fetchUserParties = async () => {
+      try {
+        const userPartiesData = await getUserParties();
+        setUserParties(userPartiesData);
+      } catch (error) {
+        console.error('Errore nel recupero dei party dell\'utente:', error);
+      }
     };
 
     fetchProductDetails();
-    fetchUserParties();
-  }, [productId]);
+  fetchUserParties();
+}, [productId]);
 
   // Gestisci la selezione della taglia
   const handleSizeSelect = (size) => {
@@ -69,20 +79,62 @@ const ProductDetail = () => {
   };
 
   // Aggiungi il prodotto a un party esistente
-  const addToExistingParty = (partyId) => {
-    // Qui implementeremo la logica per aggiungere il prodotto a un party esistente
-    alert(`Prodotto aggiunto al party ${partyId}`);
-    closeModal();
-  };
+  const addToExistingParty = async (partyId) => {
+    try {
+      // Prepara le opzioni del prodotto
+      const options = {
+        selectedSize,
+        selectedColor: '', // Se hai implementato la selezione del colore
+        quantity: 1,       // Puoi implementare la selezione della quantità
+        notes: ''          // Note opzionali
+      };
 
+      // Chiamata alla funzione di database
+    const result = await addProductToParty(partyId, product.id, options);
+    
+    if (result.success) {
+      // Crea una notifica per l'utente
+      const notification = await createNotification(
+        user.id,
+        NOTIFICATION_TYPES.PRODUCT_ADDED,
+        'Prodotto aggiunto al party',
+        `Hai aggiunto ${product.title} al tuo party`,
+        {
+          partyId,
+          productId: product.id,
+          partyProductId: result.partyProductId
+        }
+      );
+      
+      // Aggiungi la notifica
+      addNotification(notification);
+      
+      alert('Prodotto aggiunto con successo al party!');
+    } else {
+      alert('Si è verificato un errore: ' + (result.error || 'Errore sconosciuto'));
+    }
+    
+    closeModal();
+  } catch (error) {
+    console.error('Errore nell\'aggiunta del prodotto al party:', error);
+    alert('Si è verificato un errore. Riprova più tardi.');
+    closeModal();
+  }
+};
+      
   // Crea un nuovo party con questo prodotto
   const createNewParty = () => {
-    // Qui implementeremo la logica per creare un nuovo party
-    alert('Nuovo party creato con questo prodotto!');
-    closeModal();
-    // navigate('/my-parties');
+    // Salva il prodotto ID in sessionStorage per recuperarlo dopo la creazione del party
+    sessionStorage.setItem('pendingProductToAdd', JSON.stringify({
+      productId: product.id,
+      selectedSize,
+      selectedColor: '',
+      quantity: 1
+    }));
+    
+    // Naviga alla pagina di creazione party
+    navigate('/create-party');
   };
-
   // Torna al catalogo
   const handleBackToCatalog = () => {
     navigate('/products');
@@ -104,6 +156,25 @@ const ProductDetail = () => {
   }
 
   return (
+    <div className="dashboard-container">
+      <header className="dashboard-header">
+        <div className="logo-small">We Here</div>
+        <div className="user-menu">
+        <NotificationIcon />
+            <div className="user-info">
+                <img 
+                    src={user?.picture || "https://via.placeholder.com/40"} 
+                    alt="Profile" 
+                    className="user-avatar" 
+                />
+                <span className="user-name">{user?.name || 'Utente'}</span>
+            </div>
+          <button className="logout-btn" onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
+        <NotificationPanel />
+      </header>
     <div className="product-detail-container">
       <button className="back-button" onClick={handleBackToCatalog}>
         ← Torna al catalogo
@@ -184,6 +255,7 @@ const ProductDetail = () => {
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 };
